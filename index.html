@@ -9,6 +9,26 @@
   ============================================= -->
   <title>EcstaticTech641</title>
   <meta name="description" content="Projects and experiments by EcstaticTech641." />
+
+  <!-- =============================================
+       PINNED REPOS (Option A — dynamic from GitHub)
+       List the repo names you want to feature, in
+       the order you want them displayed.
+       Leave empty ([]) to show all public repos
+       sorted by stars.
+  ============================================= -->
+  <script>
+    const GITHUB_USER = 'EcstaticTech641';
+
+    const PINNED = [
+      // 'repo-name-one',
+      // 'repo-name-two',
+      // 'repo-name-three',
+    ];
+
+    // How many repos to show when PINNED is empty
+    const MAX_REPOS = 6;
+  </script>
   <!-- ============================================= -->
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -18,46 +38,37 @@
   <style>
     /* =============================================
        UI-COLORS PALETTE (from whosajid/UI-Colors)
-       Adjust hue (0-360) and chroma (0-0.2) to
-       shift the entire palette. Default: cool blue.
-       OKLCH(lightness chroma hue)
+       Adjust --hue (0-360) and --chroma (0-0.2) to
+       shift the entire palette in one edit.
     ============================================= */
     :root {
       --hue: 230;
       --chroma: 0.06;
 
-      --bg-dark:     oklch(0.14 calc(var(--chroma) * 0.5) var(--hue));
-      --bg:          oklch(0.18 calc(var(--chroma) * 0.5) var(--hue));
-      --bg-light:    oklch(0.23 calc(var(--chroma) * 0.5) var(--hue));
+      --bg-dark:      oklch(0.14 calc(var(--chroma) * 0.5) var(--hue));
+      --bg:           oklch(0.18 calc(var(--chroma) * 0.5) var(--hue));
+      --bg-light:     oklch(0.23 calc(var(--chroma) * 0.5) var(--hue));
 
-      --text:        oklch(0.94 0.01 var(--hue));
-      --text-muted:  oklch(0.62 0.02 var(--hue));
+      --text:         oklch(0.94 0.01 var(--hue));
+      --text-muted:   oklch(0.62 0.02 var(--hue));
 
-      --highlight:   oklch(0.32 calc(var(--chroma) * 0.6) var(--hue));
-      --border:      oklch(0.28 calc(var(--chroma) * 0.5) var(--hue));
-      --border-muted:oklch(0.22 calc(var(--chroma) * 0.3) var(--hue));
+      --highlight:    oklch(0.32 calc(var(--chroma) * 0.6) var(--hue));
+      --border:       oklch(0.28 calc(var(--chroma) * 0.5) var(--hue));
+      --border-muted: oklch(0.22 calc(var(--chroma) * 0.3) var(--hue));
 
-      --primary:     oklch(0.65 0.18 var(--hue));
-      --secondary:   oklch(0.72 0.14 calc(var(--hue) + 40));
+      --primary:      oklch(0.65 0.18 var(--hue));
+      --secondary:    oklch(0.72 0.14 calc(var(--hue) + 40));
 
-      --danger:      oklch(0.62 0.2  25);
-      --warning:     oklch(0.75 0.18 80);
-      --success:     oklch(0.68 0.18 150);
-      --info:        oklch(0.68 0.15 220);
+      --warning:      oklch(0.75 0.18 80);
 
-      --radius-sm:   6px;
-      --radius-md:   10px;
-      --radius-lg:   16px;
+      --radius-md:    10px;
+      --radius-lg:    16px;
 
       --font: 'Manrope', system-ui, sans-serif;
       --transition: 200ms ease;
     }
 
-    /* =============================================
-       RESET & BASE
-    ============================================= */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { scroll-behavior: smooth; }
 
     body {
@@ -77,24 +88,19 @@
     }
     a:hover { color: var(--secondary); }
 
-    /* =============================================
-       LAYOUT
-    ============================================= */
+    /* ---- Layout ---- */
     .page {
       max-width: 860px;
       margin: 0 auto;
       padding: 0 1.5rem;
     }
 
-    /* =============================================
-       HEADER / HERO
-    ============================================= */
+    /* ---- Hero ---- */
     .hero {
       padding: 5rem 0 3.5rem;
       border-bottom: 1px solid var(--border-muted);
       animation: fade-up 0.5s ease both;
     }
-
     .hero-eyebrow {
       font-size: 0.8rem;
       font-weight: 500;
@@ -103,7 +109,6 @@
       color: var(--primary);
       margin-bottom: 1rem;
     }
-
     .hero h1 {
       font-size: clamp(2rem, 5vw, 3rem);
       font-weight: 700;
@@ -111,23 +116,15 @@
       letter-spacing: -0.02em;
       margin-bottom: 1rem;
     }
-
     .hero-subtitle {
       font-size: 1.05rem;
       color: var(--text-muted);
       max-width: 520px;
       margin-bottom: 2rem;
     }
+    .hero-links { display: flex; gap: 1rem; flex-wrap: wrap; }
 
-    .hero-links {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    /* =============================================
-       BUTTONS
-    ============================================= */
+    /* ---- Buttons ---- */
     .btn {
       display: inline-flex;
       align-items: center;
@@ -151,7 +148,6 @@
       transform: translateY(-1px);
     }
     .btn:active { transform: translateY(0); }
-
     .btn-primary {
       background: var(--primary);
       border-color: var(--primary);
@@ -163,16 +159,9 @@
       color: var(--bg-dark);
     }
 
-    /* =============================================
-       SECTION HEADINGS
-    ============================================= */
-    .section {
-      padding: 3.5rem 0;
-    }
-    .section + .section {
-      border-top: 1px solid var(--border-muted);
-    }
-
+    /* ---- Sections ---- */
+    .section { padding: 3.5rem 0; }
+    .section + .section { border-top: 1px solid var(--border-muted); }
     .section-header {
       display: flex;
       align-items: baseline;
@@ -180,13 +169,11 @@
       margin-bottom: 2rem;
       gap: 1rem;
     }
-
     .section-title {
       font-size: 1.15rem;
       font-weight: 700;
       letter-spacing: -0.01em;
     }
-
     .section-link {
       font-size: 0.85rem;
       color: var(--text-muted);
@@ -194,11 +181,7 @@
     }
     .section-link:hover { color: var(--primary); }
 
-    /* =============================================
-       PROJECT CARDS GRID
-       To add a project: duplicate a .card block
-       inside #projects-grid and update the fields.
-    ============================================= */
+    /* ---- Project cards ---- */
     .projects-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -218,15 +201,6 @@
       position: relative;
       overflow: hidden;
     }
-
-    /* staggered entry delays — extend for more cards */
-    .card:nth-child(1) { animation-delay: 0.05s; }
-    .card:nth-child(2) { animation-delay: 0.10s; }
-    .card:nth-child(3) { animation-delay: 0.15s; }
-    .card:nth-child(4) { animation-delay: 0.20s; }
-    .card:nth-child(5) { animation-delay: 0.25s; }
-    .card:nth-child(6) { animation-delay: 0.30s; }
-
     .card::before {
       content: '';
       position: absolute;
@@ -236,7 +210,6 @@
       opacity: 0;
       transition: opacity var(--transition);
     }
-
     .card:hover {
       border-color: var(--highlight);
       background: var(--bg-light);
@@ -248,15 +221,8 @@
       font-size: 0.975rem;
       font-weight: 700;
       color: var(--text);
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
     }
-
-    .card-title a {
-      color: inherit;
-      text-decoration: none;
-    }
+    .card-title a { color: inherit; text-decoration: none; }
     .card-title a:hover { color: var(--primary); }
 
     .card-desc {
@@ -265,6 +231,7 @@
       line-height: 1.55;
       flex: 1;
     }
+    .card-desc.empty { font-style: italic; }
 
     .card-footer {
       display: flex;
@@ -273,26 +240,7 @@
       margin-top: 0.4rem;
     }
 
-    /* =============================================
-       TAGS / LANGUAGE BADGES
-    ============================================= */
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-    }
-
-    .tag {
-      font-size: 0.72rem;
-      font-weight: 500;
-      padding: 0.2rem 0.55rem;
-      border-radius: 999px;
-      background: var(--bg-light);
-      color: var(--text-muted);
-      border: 1px solid var(--border-muted);
-    }
-
-    /* Language dot indicator */
+    /* ---- Language dot ---- */
     .lang {
       display: inline-flex;
       align-items: center;
@@ -300,7 +248,6 @@
       font-size: 0.78rem;
       color: var(--text-muted);
     }
-
     .lang-dot {
       width: 10px;
       height: 10px;
@@ -308,9 +255,7 @@
       flex-shrink: 0;
     }
 
-    /* =============================================
-       STAR COUNT
-    ============================================= */
+    /* ---- Stars ---- */
     .stars {
       display: inline-flex;
       align-items: center;
@@ -318,7 +263,6 @@
       font-size: 0.78rem;
       color: var(--text-muted);
     }
-
     .stars svg {
       width: 13px;
       height: 13px;
@@ -326,20 +270,51 @@
       flex-shrink: 0;
     }
 
-    /* =============================================
-       ABOUT / BIO SECTION
-    ============================================= */
+    /* ---- Skeleton loading ---- */
+    .skeleton {
+      background: var(--bg);
+      border: 1px solid var(--border-muted);
+      border-radius: var(--radius-lg);
+      padding: 1.4rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .skel {
+      border-radius: 4px;
+      background: var(--bg-light);
+      animation: pulse 1.4s ease-in-out infinite;
+    }
+    .skel-title  { height: 14px; width: 55%; }
+    .skel-line   { height: 11px; width: 100%; }
+    .skel-line-sm{ height: 11px; width: 70%; }
+    .skel-foot   { height: 11px; width: 40%; margin-top: 0.4rem; }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.4; }
+      50%       { opacity: 0.9; }
+    }
+
+    /* ---- Error state ---- */
+    .api-error {
+      grid-column: 1 / -1;
+      padding: 1.5rem;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-muted);
+      background: var(--bg);
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+    .api-error a { color: var(--primary); }
+
+    /* ---- About / bio ---- */
     .bio {
       display: grid;
       grid-template-columns: 1fr auto;
       gap: 2rem;
       align-items: start;
     }
-
-    .bio-text p {
-      color: var(--text-muted);
-      margin-bottom: 0.75rem;
-    }
+    .bio-text p { color: var(--text-muted); margin-bottom: 0.75rem; }
     .bio-text p:last-child { margin-bottom: 0; }
 
     .bio-stats {
@@ -348,24 +323,17 @@
       gap: 0.75rem;
       min-width: 120px;
     }
-
-    .stat {
-      text-align: right;
-    }
+    .stat { text-align: right; }
     .stat-value {
       font-size: 1.5rem;
       font-weight: 700;
       line-height: 1;
       color: var(--text);
     }
-    .stat-label {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-    }
+    .stat-label { font-size: 0.75rem; color: var(--text-muted); }
+    .stat-value.loading { opacity: 0.3; }
 
-    /* =============================================
-       FOOTER
-    ============================================= */
+    /* ---- Footer ---- */
     footer {
       border-top: 1px solid var(--border-muted);
       padding: 2rem 0;
@@ -377,49 +345,28 @@
       flex-wrap: wrap;
       gap: 0.75rem;
     }
-
     footer a { color: var(--text-muted); }
     footer a:hover { color: var(--primary); }
 
-    /* =============================================
-       ANIMATIONS
-    ============================================= */
+    /* ---- Animations ---- */
     @keyframes fade-up {
-      from {
-        opacity: 0;
-        transform: translateY(12px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* =============================================
-       RESPONSIVE
-    ============================================= */
+    /* ---- Responsive ---- */
     @media (max-width: 600px) {
-      .bio {
-        grid-template-columns: 1fr;
-      }
-      .bio-stats {
-        flex-direction: row;
-        flex-wrap: wrap;
-        min-width: unset;
-      }
+      .bio { grid-template-columns: 1fr; }
+      .bio-stats { flex-direction: row; flex-wrap: wrap; min-width: unset; }
       .stat { text-align: left; }
       footer { flex-direction: column; align-items: flex-start; }
     }
   </style>
 </head>
 <body>
-
 <div class="page">
 
-  <!-- =============================================
-       HERO
-       Edit: name, tagline, links
-  ============================================= -->
+  <!-- Hero -->
   <header class="hero">
     <p class="hero-eyebrow">Portfolio</p>
     <h1>EcstaticTech641</h1>
@@ -429,21 +376,16 @@
     </p>
     <div class="hero-links">
       <a class="btn btn-primary" href="https://github.com/EcstaticTech641" target="_blank" rel="noopener">
-        <!-- github icon -->
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
           <path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.578.688.48C19.138 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z"/>
         </svg>
         GitHub
       </a>
-      <!-- Add more links as needed: email, twitter, linkedin, etc. -->
       <!-- <a class="btn" href="mailto:you@example.com">Contact</a> -->
     </div>
   </header>
 
-  <!-- =============================================
-       ABOUT
-       Edit: bio text, stats
-  ============================================= -->
+  <!-- About -->
   <section class="section" aria-labelledby="about-heading">
     <div class="section-header">
       <h2 class="section-title" id="about-heading">About</h2>
@@ -451,8 +393,7 @@
     <div class="bio">
       <div class="bio-text">
         <!--
-          EDIT: Replace this with your own bio.
-          Keep it short — 2-3 paragraphs max.
+          EDIT: Replace with your own bio.
         -->
         <p>
           Developer interested in systems programming, developer tooling, and
@@ -463,160 +404,217 @@
           experiments, and the occasional larger project that stuck around.
         </p>
       </div>
-      <!--
-        EDIT: Update these numbers.
-        Delete this block entirely if you prefer not to show stats.
-      -->
       <div class="bio-stats">
+        <!-- Populated dynamically from the GitHub API -->
         <div class="stat">
-          <div class="stat-value">12</div>
+          <div class="stat-value loading" id="stat-repos">—</div>
           <div class="stat-label">repositories</div>
         </div>
         <div class="stat">
-          <div class="stat-value">3</div>
-          <div class="stat-label">languages</div>
+          <div class="stat-value loading" id="stat-stars">—</div>
+          <div class="stat-label">total stars</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- =============================================
-       PROJECTS
-       To add a project: copy one .card block and
-       fill in: title, link, description, tags,
-       language name + color, and star count.
-
-       Common language colors (hex):
-         JavaScript  #f1e05a
-         TypeScript  #3178c6
-         Python      #3572A5
-         Rust        #dea584
-         Go          #00ADD8
-         C           #555555
-         C++         #f34b7d
-         HTML        #e34c26
-         CSS         #563d7c
-         Shell       #89e051
-         Ruby        #701516
-  ============================================= -->
+  <!-- Projects -->
   <section class="section" aria-labelledby="projects-heading">
     <div class="section-header">
       <h2 class="section-title" id="projects-heading">Projects</h2>
-      <a class="section-link" href="https://github.com/EcstaticTech641?tab=repositories" target="_blank" rel="noopener">
+      <a class="section-link"
+         href="https://github.com/EcstaticTech641?tab=repositories"
+         target="_blank" rel="noopener">
         All repositories &rarr;
       </a>
     </div>
-
     <div class="projects-grid" id="projects-grid">
-
-      <!-- ---- PROJECT 1 ---- -->
-      <article class="card">
-        <div class="card-title">
-          <a href="https://github.com/EcstaticTech641/REPO-NAME" target="_blank" rel="noopener">
-            project-one
-          </a>
-        </div>
-        <p class="card-desc">
-          Short description of what this project does. One or two sentences is plenty.
-        </p>
-        <div class="tags">
-          <span class="tag">utility</span>
-          <span class="tag">cli</span>
-        </div>
-        <div class="card-footer">
-          <span class="lang">
-            <span class="lang-dot" style="background:#f1e05a;"></span>
-            JavaScript
-          </span>
-          <span class="stars">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            4
-          </span>
-        </div>
-      </article>
-
-      <!-- ---- PROJECT 2 ---- -->
-      <article class="card">
-        <div class="card-title">
-          <a href="https://github.com/EcstaticTech641/REPO-NAME" target="_blank" rel="noopener">
-            project-two
-          </a>
-        </div>
-        <p class="card-desc">
-          Short description of what this project does. One or two sentences is plenty.
-        </p>
-        <div class="tags">
-          <span class="tag">library</span>
-        </div>
-        <div class="card-footer">
-          <span class="lang">
-            <span class="lang-dot" style="background:#3572A5;"></span>
-            Python
-          </span>
-          <span class="stars">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            7
-          </span>
-        </div>
-      </article>
-
-      <!-- ---- PROJECT 3 ---- -->
-      <article class="card">
-        <div class="card-title">
-          <a href="https://github.com/EcstaticTech641/REPO-NAME" target="_blank" rel="noopener">
-            project-three
-          </a>
-        </div>
-        <p class="card-desc">
-          Short description of what this project does. One or two sentences is plenty.
-        </p>
-        <div class="tags">
-          <span class="tag">tool</span>
-          <span class="tag">automation</span>
-        </div>
-        <div class="card-footer">
-          <span class="lang">
-            <span class="lang-dot" style="background:#dea584;"></span>
-            Rust
-          </span>
-          <span class="stars">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            2
-          </span>
-        </div>
-      </article>
-
-      <!-- Add more .card blocks here following the same pattern -->
-
+      <!-- Skeleton placeholders shown while the API loads -->
+      <div class="skeleton" aria-hidden="true">
+        <div class="skel skel-title"></div>
+        <div class="skel skel-line"></div>
+        <div class="skel skel-line-sm"></div>
+        <div class="skel skel-foot"></div>
+      </div>
+      <div class="skeleton" aria-hidden="true">
+        <div class="skel skel-title"></div>
+        <div class="skel skel-line"></div>
+        <div class="skel skel-line-sm"></div>
+        <div class="skel skel-foot"></div>
+      </div>
+      <div class="skeleton" aria-hidden="true">
+        <div class="skel skel-title"></div>
+        <div class="skel skel-line"></div>
+        <div class="skel skel-line-sm"></div>
+        <div class="skel skel-foot"></div>
+      </div>
     </div>
   </section>
 
-  <!-- =============================================
-       FOOTER
-       Edit: your name / year / links
-  ============================================= -->
+  <!-- Footer -->
   <footer>
     <span>EcstaticTech641</span>
     <span>
       <a href="https://github.com/EcstaticTech641" target="_blank" rel="noopener">GitHub</a>
       &nbsp;&middot;&nbsp;
-      <!-- palette credit — feel free to remove -->
       Themed with <a href="https://github.com/whosajid/UI-Colors" target="_blank" rel="noopener">UI Colors</a>
     </span>
   </footer>
 
 </div>
 
-<!--
-  Optional: swap the UI-Colors palette at runtime.
-  Remove this script block if you don't want sliders.
-  Or adapt it to a settings panel — just update the
-  CSS variables on :root to shift the whole theme.
--->
 <script>
-  /* Nothing required for static deployment.
-     Add your own analytics or progressive
-     enhancements here if needed. */
+  /* =============================================
+     GitHub language colors
+     Source: github-linguist
+     Add entries here as needed.
+  ============================================= */
+  const LANG_COLORS = {
+    JavaScript:  '#f1e05a',
+    TypeScript:  '#3178c6',
+    Python:      '#3572A5',
+    Rust:        '#dea584',
+    Go:          '#00ADD8',
+    C:           '#555555',
+    'C++':       '#f34b7d',
+    'C#':        '#178600',
+    Java:        '#b07219',
+    Kotlin:      '#A97BFF',
+    Swift:       '#F05138',
+    Ruby:        '#701516',
+    PHP:         '#4F5D95',
+    Shell:       '#89e051',
+    PowerShell:  '#012456',
+    HTML:        '#e34c26',
+    CSS:         '#563d7c',
+    SCSS:        '#c6538c',
+    Vue:         '#41b883',
+    Svelte:      '#ff3e00',
+    Lua:         '#000080',
+    Elixir:      '#6e4a7e',
+    Haskell:     '#5e5086',
+    Zig:         '#ec915c',
+  };
+
+  /* =============================================
+     localStorage cache — avoids hammering the
+     API on every page load. Expires after 5 min.
+  ============================================= */
+  const CACHE_KEY = `gh_repos_${GITHUB_USER}`;
+  const CACHE_TTL = 5 * 60 * 1000;
+
+  function getCached() {
+    try {
+      const raw = localStorage.getItem(CACHE_KEY);
+      if (!raw) return null;
+      const { ts, data } = JSON.parse(raw);
+      if (Date.now() - ts > CACHE_TTL) return null;
+      return data;
+    } catch { return null; }
+  }
+
+  function setCache(data) {
+    try {
+      localStorage.setItem(CACHE_KEY, JSON.stringify({ ts: Date.now(), data }));
+    } catch {}
+  }
+
+  /* =============================================
+     Card renderer
+  ============================================= */
+  const starSVG = `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>`;
+
+  function renderCard(repo, index) {
+    const color   = LANG_COLORS[repo.language] || '#888';
+    const desc    = repo.description
+      ? repo.description
+      : '<span class="empty">No description provided.</span>';
+    const delay   = (index * 0.05 + 0.05).toFixed(2);
+
+    return `
+      <article class="card" style="animation-delay:${delay}s">
+        <div class="card-title">
+          <a href="${repo.html_url}" target="_blank" rel="noopener">${repo.name}</a>
+        </div>
+        <p class="card-desc">${desc}</p>
+        <div class="card-footer">
+          ${repo.language ? `
+            <span class="lang">
+              <span class="lang-dot" style="background:${color};"></span>
+              ${repo.language}
+            </span>` : '<span></span>'}
+          <span class="stars">
+            ${starSVG}
+            ${repo.stargazers_count}
+          </span>
+        </div>
+      </article>`;
+  }
+
+  /* =============================================
+     Fetch & render
+  ============================================= */
+  async function loadRepos() {
+    const grid = document.getElementById('projects-grid');
+
+    // Try cache first
+    let repos = getCached();
+
+    if (!repos) {
+      try {
+        // Fetch up to 100 repos (max per page), public only
+        const res = await fetch(
+          `https://api.github.com/users/${GITHUB_USER}/repos?per_page=100&type=public`,
+          { headers: { Accept: 'application/vnd.github+json' } }
+        );
+
+        if (!res.ok) throw new Error(`GitHub API ${res.status}`);
+        repos = await res.json();
+        setCache(repos);
+      } catch (err) {
+        grid.innerHTML = `
+          <div class="api-error">
+            Could not load repositories — ${err.message}.
+            <a href="https://github.com/${GITHUB_USER}?tab=repositories"
+               target="_blank" rel="noopener">
+              View them on GitHub &rarr;
+            </a>
+          </div>`;
+        return;
+      }
+    }
+
+    // Filter and sort
+    let display;
+
+    if (PINNED.length > 0) {
+      // Show only pinned repos, in the order specified
+      const byName = Object.fromEntries(repos.map(r => [r.name, r]));
+      display = PINNED.map(name => byName[name]).filter(Boolean);
+    } else {
+      // Show top repos by star count
+      display = repos
+        .filter(r => !r.fork)
+        .sort((a, b) => b.stargazers_count - a.stargazers_count)
+        .slice(0, MAX_REPOS);
+    }
+
+    // Render cards
+    grid.innerHTML = display.length
+      ? display.map(renderCard).join('')
+      : `<div class="api-error">No repositories found.</div>`;
+
+    // Update stats
+    const totalStars = repos.reduce((n, r) => n + r.stargazers_count, 0);
+
+    const elRepos = document.getElementById('stat-repos');
+    const elStars = document.getElementById('stat-stars');
+
+    if (elRepos) { elRepos.textContent = repos.length; elRepos.classList.remove('loading'); }
+    if (elStars) { elStars.textContent = totalStars;   elStars.classList.remove('loading'); }
+  }
+
+  loadRepos();
 </script>
 
 </body>
