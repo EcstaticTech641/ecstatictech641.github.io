@@ -1,2 +1,3 @@
-# ecstatictech641.github.io
+# EcstaticTech.github.io
 github.io landing page
+
